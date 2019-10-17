@@ -45,6 +45,33 @@ public class miniraknare extends Application {
         mainLayout = new BorderPane();
     }
 
-    public static void 
+    private void displayNunmpadButtons(){
+        int buttonIndex = 0;
+        for (int rowIndex = 0; rowIndex < 5; rowIndex++){
+            for (int columnIndex = 0; columnIndex <3; columnIndex++){
+                numpadLayout.add(numpad.get(buttonIndex), columnIndex, rowIndex);
+                buttonIndex++;
+                if (buttonIndex == numpad.size())
+                    break;
+            }
+        }
+    }
+
+    private void populateNumpad (){
+        char[] numpadKeys = new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '-', '+', '*'};
+
+        for (char key : numpadKeys) {
+            String keyText = key + "";
+            Button tempButton = new Button(keyText);
+            tempButton.setId(keyText);
+            tempButton.setOnAction(event -> {
+                inputField.textProperty().set(inputField.textProperty().get() + keyText);
+            });
+            numpad.add(tempButton);
+        }
+
+    }
+
+
 
 }
